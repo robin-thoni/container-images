@@ -75,11 +75,17 @@ jobs:
           username: robinthoni
           password: ${{ secrets.DOCKER_HUB_TOKEN }}
 
+      - id: metadata
+        if: ${{ matrix.images != 'none' }}
+        working-directory: src/${{matrix.images}}
+        run: |
+          echo "version=$(cat version)" > $GITHUB_OUTPUT
+
       - uses: docker/build-push-action@v6
         if: ${{ matrix.images != 'none' }}
         with:
           push: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
-          tags: robinthoni/${{matrix.images}}:latest
+          tags: robinthoni/${{matrix.images}}:${{ steps.metadata.outputs.version }}
           context: src/${{matrix.images}}
 
   complete-test:
