@@ -1,0 +1,18 @@
+{
+    "name": "DevContainer Dev Environment",
+    "image": "mcr.microsoft.com/devcontainers/base:noble",
+    "features": {
+      "ghcr.io/devcontainers/features/docker-outside-of-docker:1": {}
+    },
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "ms-azuretools.vscode-docker",
+                "github.vscode-github-actions"
+            ]
+        }
+    },
+    "mounts": [
+      "source=/tmp/,target=/tmp/,type=bind"
+    ]
+}
