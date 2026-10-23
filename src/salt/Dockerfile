@@ -2,7 +2,7 @@
 
 FROM debian:trixie
 
-ARG SALT_VERSION=3007.6
+ARG SALT_VERSION=3008.3
 
 RUN <<EOF
 set -x
@@ -29,7 +29,7 @@ RUN <<EOF
 set -x
 set -e
 
-wget -O /tmp/bootstrap-salt.sh https://github.com/saltstack/salt-bootstrap/releases/download/v2025.02.24/bootstrap-salt.sh
+wget -O /tmp/bootstrap-salt.sh https://github.com/saltstack/salt-bootstrap/releases/download/v2026.10.08/bootstrap-salt.sh
 chmod +x /tmp/bootstrap-salt.sh
 /tmp/bootstrap-salt.sh \
     -N \
